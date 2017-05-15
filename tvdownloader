@@ -12,5 +12,7 @@ sed 's/\],\[/\n/g' tmp1 > tmp2
 sed 's/\"//g' tmp2 > tmp1
 sed 's/\\//g' tmp1 > tmp2
 cut -d',' -f6,8 --output-delimiter=' | ' tmp2 >> TV-Online-TDT-Spain.md
+#working without -output-delimiter command
+awk -F, '{print $6,$8}' OFS=" | " tmp2 | sort > TV-Online-TDT-Spain.md
 
 rm tmp1 tmp2
